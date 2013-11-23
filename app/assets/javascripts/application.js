@@ -10,6 +10,43 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require_tree ./components
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+var global_index = 0; // this is so gross -- TODO clean up later
+
+$(document).ready(function(){
+
+  $("#p-slider a").click(function(e){
+    var index = parseInt( $(this).attr("href").replace("#", "") );
+    activatePaneByIndex( index );
+    e.preventDefault();
+    return false;
+  });
+
+  $(window).resize(function(){ 
+    activatePaneByIndex(global_index) 
+  });
+
+  $(window).keydown(function(e){
+    if( $( document.activeElement ).is("input[type=text]") ) return;
+    if( e.which == 39 ){
+      activatePaneByIndex( global_index + 1 );
+    }else if( e.which == 37 ){
+      activatePaneByIndex( global_index - 1 );
+    }
+  });
+
+});
+
+
+function activatePaneByIndex( index ){
+  if( index < 0 || index > 4 ) return; // TODO: make this modular and not hardcoded
+  var motion_size = $("#p-form").eq(0).outerWidth(true);
+  $("#p-slider").animate({left: "-"+(index * motion_size)+"px" }, 400, "linear");
+  global_index = index;
+  $("nav>ul>li").removeClass("gp-step-current").eq(index).addClass("gp-step-current");
+  if( index == 4 )$("nav>ul>li").addClass("gp-step-current");
+}
