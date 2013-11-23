@@ -15,7 +15,14 @@
 //= require jquery_ujs
 //= require_tree .
 
-var global_index = 0; // this is so gross -- TODO clean up later
+
+
+
+$.cookie.json = true;
+
+// global variables are so gross -- TODO clean up later
+var global_cart = $.cookie("shopping_cart");
+var global_index = 0; 
 
 $(document).ready(function(){
 
