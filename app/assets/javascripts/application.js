@@ -10,19 +10,30 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_tree ./components
 //= require jquery
 //= require jquery_ujs
+//= require_tree ./components
 //= require_tree .
 
-
-
-
-$.cookie.json = true;
 
 // global variables are so gross -- TODO clean up later
 var global_cart = $.cookie("shopping_cart");
 var global_index = 0; 
+var global_position = null;
+
+$.cookie.json = true;
+
+if(navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position){
+    global_position = position;
+  }, function(){
+    console.log("Geolocation error");
+  });
+} else {
+  console.log("Geolocation error");
+}
+
+
 
 $(document).ready(function(){
 
