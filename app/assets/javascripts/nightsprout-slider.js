@@ -15,6 +15,7 @@ $.widget("ns.slider", {
     $("a[ns-slider-page]", this.element).click(function(e){
       var index = parseInt( $(this).attr("ns-slider-page") );
       self._activatePaneByIndex( index );
+
       e.preventDefault();
       return false;
     });
@@ -42,6 +43,7 @@ $.widget("ns.slider", {
 
 
   destroy: function(){
+    this.element.animate({left: "0px" }, 400, "linear");
     return;
   }
 
