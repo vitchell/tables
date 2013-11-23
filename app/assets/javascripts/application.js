@@ -31,24 +31,25 @@ if(navigator.geolocation) {
 
     var closest = {
       ptr: null,
-      val: 0
+      val: 100000000
     };
 
     $("#tb-cities>li").each(function(){
       var lat1 = parseFloat($(this).attr("lat"));
       var lon1 = parseFloat($(this).attr("lon"));
-
+      
       var distance = haversine( lat1, lon1, global_position.coords.latitude, global_position.coords.longitude);
       $(this).attr("distance", distance);
 
-      if( distance > closest.val ){
+      if( distance < closest.val ){
         closest.val = distance;
         closest.ptr = $(this);
       }
+
     });
 
     if( closest.ptr != null ){
-      $("#tb-cities.tb-city-selected").removeClass(".tb-city-selected");
+      $(".tb-city-selected").removeClass("tb-city-selected");
       closest.ptr.addClass("tb-city-selected");  
     }
 
