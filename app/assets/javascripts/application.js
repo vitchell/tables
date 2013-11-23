@@ -52,10 +52,6 @@ if(navigator.geolocation) {
       closest.ptr.addClass("tb-city-selected");  
     }
 
-    var active = $("#tb-cities .tb-city-selected");
-    active.parent().prepend( active.clone() );
-    active.remove();
-
   }, function(){
     console.log("Geolocation error");
   });
