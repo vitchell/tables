@@ -12,14 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.core
+//= require jquery.ui.widget
 //= require_tree ./components
 //= require_tree .
 
 
 // global variables are so gross -- TODO clean up later
 var global_cart = $.cookie("shopping_cart");
-var global_index = 0; 
-var global_position = null;
+
 
 $.cookie.json = true;
 
@@ -33,38 +34,7 @@ if(navigator.geolocation) {
   console.log("Geolocation error");
 }
 
-
-
 $(document).ready(function(){
-
-  $("#p-slider a").click(function(e){
-    var index = parseInt( $(this).attr("href").replace("#", "") );
-    activatePaneByIndex( index );
-    e.preventDefault();
-    return false;
-  });
-
-  $(window).resize(function(){ 
-    activatePaneByIndex(global_index) 
-  });
-
-  $(window).keydown(function(e){
-    if( $( document.activeElement ).is("input[type=text]") ) return;
-    if( e.which == 39 ){
-      activatePaneByIndex( global_index + 1 );
-    }else if( e.which == 37 ){
-      activatePaneByIndex( global_index - 1 );
-    }
-  });
-
+  $("#p-slider").slider();
 });
 
-
-function activatePaneByIndex( index ){
-  if( index < 0 || index > 4 ) return; // TODO: make this modular and not hardcoded
-  var motion_size = $("#p-form").eq(0).outerWidth(true);
-  $("#p-slider").animate({left: "-"+(index * motion_size)+"px" }, 400, "linear");
-  global_index = index;
-  $("nav>ul>li").removeClass("gp-step-current").eq(index).addClass("gp-step-current");
-  if( index == 4 )$("nav>ul>li").addClass("gp-step-current");
-}
