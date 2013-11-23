@@ -1,17 +1,41 @@
-<div id="gp-content-container">
 
-  <div id="gp-content">
 
-    <form id="p-form">
-      <ul id="p-slider">
-        <%= render "step1" %>
-        <%= render "step2" %>
-        <%= render "step3" %>
-      </ul>
-    </form>
+
+<div id="tb-wrapper" class="tb-splash">
+
+  <nav>
+    <div id="tb-menu-expander">
+    </div>
+    <!-- #tb-menu-expander -->
+    <div id="tb-options">
+      Options
+    </div>
+    <!-- #tb-menu -->
+  </nav>
+
+  <h1>Tables</h1>
+
+  <h2>Go get me a table in ...</h2>
+
+  <img id="tb-map" src="<%= asset_path "map.png" %>" />
+
+  <ul id="tb-cities">
+    <li><a href="#">Las Vegas</a></li>
+    <li><a href="#">Los Angeles</a></li>
+    <li class="tb-city-selected"><a href="#">Atlanta</a></li>
+    <li><a href="#">Miami</a></li>
+    <li><a href="#">New York</a></li>
+    <li><a href="#">Charlotte</a></li>
+  </ul>
+  <!-- #tb-cities -->
+
+  <div class="tb-card">
 
   </div>
-  <!-- #gp-content -->
+  <!-- .tb-card -->
 
 </div>
-<!-- #gp-content-container -->
+<!-- #tb-wrapper -->
+
+
+
