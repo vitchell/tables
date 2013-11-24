@@ -656,12 +656,15 @@ button:before {
         width: 168px;
         a.tb-button {
           float: right;
-          padding: 2px 15px 1px 15px;
-          border-width: 2px;
+          padding: 2px 15px 2px 15px;
           margin: 20px 0 0 0;
+          border: none;
           font-size: 18px;
           font-weight: 900;
+          color: $font-body-color;
           text-transform: uppercase;
+          background: rgba(0, 0, 0, 0.10);
+          @include text-shadow(none);
         }
       }
     }
