@@ -1,13 +1,13 @@
-
-<div class="tb-card">
+--><div class="tb-card">
 
   <div class="tb-card-header">
-    <h1>Review Drink Order</h1>
+    <h1>Add Drinks</h1>
     <div class="tb-card-header-option-left">
       <a href="#" ns-slider-page="3">Back</a>
     </div>
     <!-- .tb-card-header-option-left -->
     <div class="tb-card-header-option-right">
+      <a href="#" ns-slider-page="5">Sort By</a>
     </div>
     <!-- .tb-card-header-option-right -->
   </div>
@@ -16,14 +16,55 @@
   <div class="tb-card-content" style="height: 643px;">
 
     <div class="tb-list-panel">
-      <strong>Grand Total:</strong>
-      <span>$82,500.00</span>
-      <p>In the next step this total will be divided amongst however many paying party members you add.</p>
-      <a href="/step06" class="tb-button tb-button-cta">Split the Bill</a>
+      <strong>Running Total:</strong>
+      <span class="tb-cart-total">$82,500.00</span>
+      <p>In the next step you will review the list of drinks you have ordered for your table.</p>
+      <a href="/step05" class="tb-button tb-button-cta">Review Order</a>
     </div>
     <!-- .tb-list-panel -->
+
+    <script>
+    $(document).ready(function(){
+      $("#tb-shopping-cart li i").click(function(){
+        var text = $(this).text();
+        var target = $(this).parent().find("input").eq(0);
+        var value = target.val();
+        if( value != null && value != '' ) value = parseInt( value );
+        else value = 0;
+
+        if( text == "+" ){
+          target.val( value + 1 );
+        }else{
+          if( value >= 0 ) target.val( value - 1 );
+        }
+        recalculateTotal();
+      });
+    });
+
+    function recalculateTotal(){
+      var cart = [];
+      var total = 0;
+      $("#tb-shopping-cart li").each(function(){
+        var thing = $(this).find("h4").text();
+        var cost = parseFloat( $(this).find("h5").text().replace("$", "") );
+        var count = parseInt( $(this).find("input").val() );
+        if( isNaN(count) ) count = 0;
+
+        cart.push({
+          item: thing,
+          value: cost,
+          count: count
+        });
+        total += (count * cost );
+      });
+      $.cookie("shopping_cart", cart);
+      global_cart = cart;
+      console.log( total )
+      $(".tb-cart-toal").text("$" + total );
+    }
+    </script>
     
-    <ul class="tb-detail-list">
+    <ul id="tb-shopping-cart" class="tb-detail-list">
       <li>
         <a class="tb-detail-list-thumbnail" href="#">
           <img src="<%= asset_path "promoter-thumb-1.jpg" %>" />
@@ -88,15 +129,138 @@
         </div>
         <!-- .tb-detail-list-action -->
       </li>
+      <li>
+        <a class="tb-detail-list-thumbnail" href="#">
+          <img src="<%= asset_path "promoter-thumb-1.jpg" %>" />
+        </a>
+        <div class="tb-detail-list-info">
+          <h4>Perrior Jouet</h4>
+          <h5><span>$950.00</span></h5>
+        </div>
+        <!-- .tb-detail-list-info -->
+        <div class="tb-detail-list-action" href="#">
+          <i class="ss-icon">-</i>
+          <input type="text" placeholder="0" />
+          <i class="ss-icon">+</i>
+        </div>
+        <!-- .tb-detail-list-action -->
+      </li>
+      <li>
+        <a class="tb-detail-list-thumbnail" href="#">
+          <img src="<%= asset_path "promoter-thumb-1.jpg" %>" />
+        </a>
+        <div class="tb-detail-list-info">
+          <h4>Cristal</h4>
+          <h5><span>$950.00</span></h5>
+        </div>
+        <!-- .tb-detail-list-info -->
+        <div class="tb-detail-list-action" href="#">
+          <i class="ss-icon">-</i>
+          <input type="text" placeholder="0" />
+          <i class="ss-icon">+</i>
+        </div>
+        <!-- .tb-detail-list-action -->
+      </li>
+      <li>
+        <a class="tb-detail-list-thumbnail" href="#">
+          <img src="<%= asset_path "promoter-thumb-1.jpg" %>" />
+        </a>
+        <div class="tb-detail-list-info">
+          <h4>Krug</h4>
+          <h5><span>$950.00</span></h5>
+        </div>
+        <!-- .tb-detail-list-info -->
+        <div class="tb-detail-list-action" href="#">
+          <i class="ss-icon">-</i>
+          <input type="text" placeholder="0" />
+          <i class="ss-icon">+</i>
+        </div>
+        <!-- .tb-detail-list-action -->
+      </li>
+      <li>
+        <a class="tb-detail-list-thumbnail" href="#">
+          <img src="<%= asset_path "promoter-thumb-1.jpg" %>" />
+        </a>
+        <div class="tb-detail-list-info">
+          <h4>Moet &amp; Chandon</h4>
+          <h5><span>$950.00</span></h5>
+        </div>
+        <!-- .tb-detail-list-info -->
+        <div class="tb-detail-list-action" href="#">
+          <i class="ss-icon">-</i>
+          <input type="text" placeholder="0" />
+          <i class="ss-icon">+</i>
+        </div>
+        <!-- .tb-detail-list-action -->
+      </li>
+      <li>
+        <a class="tb-detail-list-thumbnail" href="#">
+          <img src="<%= asset_path "promoter-thumb-1.jpg" %>" />
+        </a>
+        <div class="tb-detail-list-info">
+          <h4>Piper Heidseick</h4>
+          <h5><span>$950.00</span></h5>
+        </div>
+        <!-- .tb-detail-list-info -->
+        <div class="tb-detail-list-action" href="#">
+          <i class="ss-icon">-</i>
+          <input type="text" placeholder="0" />
+          <i class="ss-icon">+</i>
+        </div>
+        <!-- .tb-detail-list-action -->
+      </li>
+      <li>
+        <a class="tb-detail-list-thumbnail" href="#">
+          <img src="<%= asset_path "promoter-thumb-1.jpg" %>" />
+        </a>
+        <div class="tb-detail-list-info">
+          <h4>Salon</h4>
+          <h5><span>$950.00</span></h5>
+        </div>
+        <!-- .tb-detail-list-info -->
+        <div class="tb-detail-list-action" href="#">
+          <i class="ss-icon">-</i>
+          <input type="text" placeholder="0" />
+          <i class="ss-icon">+</i>
+        </div>
+        <!-- .tb-detail-list-action -->
+      </li>
+      <li>
+        <a class="tb-detail-list-thumbnail" href="#">
+          <img src="<%= asset_path "promoter-thumb-1.jpg" %>" />
+        </a>
+        <div class="tb-detail-list-info">
+          <h4>Dom Perignon</h4>
+          <h5><span>$950.00</span></h5>
+        </div>
+        <!-- .tb-detail-list-info -->
+        <div class="tb-detail-list-action" href="#">
+          <i class="ss-icon">-</i>
+          <input type="text" placeholder="0" />
+          <i class="ss-icon">+</i>
+        </div>
+        <!-- .tb-detail-list-action -->
+      </li>
+      <li>
+        <a class="tb-detail-list-thumbnail" href="#">
+          <img src="<%= asset_path "promoter-thumb-1.jpg" %>" />
+        </a>
+        <div class="tb-detail-list-info">
+          <h4>Dom Perignon</h4>
+          <h5><span>$950.00</span></h5>
+        </div>
+        <!-- .tb-detail-list-info -->
+        <div class="tb-detail-list-action" href="#">
+          <i class="ss-icon">-</i>
+          <input type="text" placeholder="0" />
+          <i class="ss-icon">+</i>
+        </div>
+        <!-- .tb-detail-list-action -->
+      </li>
     </ul>
     <!-- .tb-detail-list -->
 
   </div>
   <!-- .tb-card-content -->
 
-</div>
-<!-- .tb-card -->
-
-
-
-
+</div><!--
