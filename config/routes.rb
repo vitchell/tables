@@ -1,7 +1,7 @@
 Tables::Application.routes.draw do
   root 'home#index'
-
-  get 'iphone' => "home#iphone"
+  
+  get 'test' => "home#test"
 
   get 'step01' => "home#step01"
   get 'step02' => "home#step02"

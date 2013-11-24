@@ -22,8 +22,25 @@
 var global_cart = $.cookie("shopping_cart");
 var global_position = null;
 
-
 $.cookie.json = true;
+
+$(document).ready(function(){
+  $("#tb-card-holder").slider();
+
+  $("#tb-cities a").click( function(e){
+    $("#tb-card-holder").removeClass("tb-card-holder-hidden");
+    e.preventDefault();
+    return false;
+  });
+
+  $("#tb-reset-to-start").click( function(e){
+    $("#tb-card-holder").addClass("tb-card-holder-hidden");
+    e.preventDefault();
+    return false;
+  });
+
+});
+
 
 if(navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function(position){
@@ -59,10 +76,6 @@ if(navigator.geolocation) {
 } else {
   console.log("Geolocation error");
 }
-
-$(document).ready(function(){
-  $("#p-slider").slider();
-});
 
 function haversine(lat1, lon1, lat2, lon2){
   var R = 6371; // km

@@ -312,6 +312,7 @@ button:before {
   float: left;
   width: 640px;
   height: 1136px;
+  overflow: hidden;
   text-align: center;
   background: transparent image-url("body-background.jpg") no-repeat center center;
   > h1 {
@@ -444,17 +445,43 @@ button:before {
   padding: 85px 10px 0 10px;
   position: absolute;
   top: 0;
+  white-space: nowrap;
   overflow: hidden;
+
+  @include transition-property(left);
+  @include transition-duration(0.25s);
+  @include transition-timing-function(ease-in); 
+  @include transition-delay(0.25s);
 }
 
+.tb-card-holder-hidden{
+  left: 640px;
+
+  @include transition-property(left);
+  @include transition-duration(0.25s);
+  @include transition-timing-function(ease-in); 
+  @include transition-delay(0.25s);
+}
+
+
+
+  
+
 .tb-card {
-  display: block;
-  width: inherit;
+
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: visible;
+  white-space: normal;
+  
   color: $font-body-color;
-  min-height: 1041px;
+  
   text-align: left;
   background: #ffffff;
   @include border-radius(8px);
+
   .tb-card-header {
     display: block;
     width: inherit;
@@ -471,6 +498,7 @@ button:before {
     }
     .tb-card-header-option-left,
     .tb-card-header-option-right {
+      color: #595959;
       display: block;
       float: left;
       padding: 0 20px;
@@ -744,6 +772,7 @@ button:before {
   }
 
 }
+
 
 
 
