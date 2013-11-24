@@ -7,7 +7,7 @@
     </div>
     <!-- .tb-card-header-option-left -->
     <div class="tb-card-header-option-right">
-      <a href="#" ns-slider-page="5">Sort By</a>
+      Sort By
     </div>
     <!-- .tb-card-header-option-right -->
   </div>
@@ -17,9 +17,9 @@
 
     <div class="tb-list-panel">
       <strong>Running Total:</strong>
-      <span class="tb-cart-total">$82,500.00</span>
+      <span class="tb-cart-total">$0.00</span>
       <p>In the next step you will review the list of drinks you have ordered for your table.</p>
-      <a href="/step05" class="tb-button tb-button-cta">Review Order</a>
+      <a href="#" ns-slider-page="5" class="tb-button tb-button-cta">Review Order</a>
     </div>
     <!-- .tb-list-panel -->
 
@@ -39,12 +39,14 @@
         }
         recalculateTotal();
       });
+      recalculateTotal();
     });
 
     function recalculateTotal(){
       var cart = [];
       var total = 0;
-      $("#tb-shopping-cart li").each(function(){
+      $("#tb-shopping-cart li").each(function(k, v){
+
         var thing = $(this).find("h4").text();
         var cost = parseFloat( $(this).find("h5").text().replace("$", "") );
         var count = parseInt( $(this).find("input").val() );
@@ -56,11 +58,16 @@
           count: count
         });
         total += (count * cost );
+
+        var echo = $("#tb-shopping-cart-echo li").eq(k);
+        if( count > 0 ) echo.show();
+        else echo.hide();
+        echo.find("input").val( count );
+
       });
       $.cookie("shopping_cart", cart);
       global_cart = cart;
-      console.log( total )
-      $(".tb-cart-toal").text("$" + total );
+      $(".tb-cart-total").text( "$" + total );
     }
     </script>
     
