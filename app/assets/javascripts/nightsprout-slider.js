@@ -36,7 +36,7 @@ $.widget("ns.slider", {
   _activatePaneByIndex: function(index){
     if( index < 0 || index > this.options.max_index ) return;
 
-    var motion_size = this.element.parent().outerWidth(true);
+    var motion_size = this.element.parent().width();
     console.log(motion_size)
     this.element.children().eq(0).animate({"margin-left": "-"+(index * motion_size)+"px" }, 400, "linear");
     this.options.index = index;
