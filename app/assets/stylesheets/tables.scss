@@ -135,6 +135,7 @@ body {
   font-family: $sans-serif-font;
   line-height: 40px;
   color: $font-body-color;
+  background: transparent image-url("iphone.png") no-repeat top center;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -322,9 +323,9 @@ button:before {
 
 #tb-wrapper {
   display: block;
-  float: left;
   width: 640px;
   height: 1136px;
+  margin: 220px auto 0 auto;
   overflow: hidden;
   text-align: center;
   background: transparent image-url("body-background.jpg") no-repeat center center;
@@ -457,8 +458,8 @@ button:before {
   width: 620px;
   height: 1051px;
   padding: 85px 10px 0 10px;
-  position: absolute;
-  top: 0;
+  position: relative;
+  top: -1090px;
   white-space: nowrap;
   overflow: hidden;
   vertical-align: top;
