@@ -444,6 +444,7 @@ button:before {
   padding: 85px 10px 0 10px;
   position: absolute;
   top: 0;
+  overflow: hidden;
 }
 
 .tb-card {
@@ -619,6 +620,45 @@ button:before {
         float: right;
         margin: 0 20px 0 0;
       }
+    }
+  }
+
+  .tb-list-panel {
+    display: block;
+    width: 620px;
+    height: 322px;
+    padding: 30px 20px 0 20px;
+    margin: 643px 0 0 0;
+    background: $white;
+    position: absolute;
+    z-index: 70;
+    font-weight: 300;
+    @include box-sizing(border-box);
+    @include box-shadow(0 0 50px rgba(0, 0, 0, 0.50));
+    @include border-radius(0 0 8px 8px);
+    > p {
+      display: block;
+      float: left;
+      width: 100%;
+      margin: 0 0 33px 0;
+    }
+    > strong {
+      display: block;
+      float: left;
+      margin: 0 0 11px 0;
+      font-size: 26px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    > span {
+      display: block;
+      float: right;
+      margin: 0 0 11px 0;
+      font-size: 26px;
+    }
+    .tb-button {
+      width: 100%;
+      text-align: center;
     }
   }
 
