@@ -461,6 +461,7 @@ button:before {
   top: 0;
   white-space: nowrap;
   overflow: hidden;
+  vertical-align: top;
 
   @include transition-property(left);
   @include transition-duration(0.25s);
