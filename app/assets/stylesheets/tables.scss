@@ -713,6 +713,7 @@ button:before {
     > li {
       display: block;
       width: 100%;
+      min-height: 101px;
       padding: 11px 22px 10px 22px;
       border-top: 1px solid #efe9e2;
       @include box-sizing(border-box);
