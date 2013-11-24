@@ -380,7 +380,8 @@ button:before {
       background: transparent image-url("hamburger.png") no-repeat 0 0;
     }
     #tb-options {
-      display: block;
+      // display: block;
+      display: none;
       float: right;
     }
   }
@@ -523,10 +524,20 @@ button:before {
       position: relative;
       z-index: 50;
       @include border-radius(0 3px 3px 0);
+      a {
+        color: inherit;
+      }
+      a:hover {
+        text-decoration: none;
+      }
     }
     .tb-card-header-option-right {
       float: right;
       @include border-radius(3px 0 0 3px);
+    }
+    .tb-card-header-option-left:hover,
+    .tb-card-header-option-right:hover {
+      @include opacity(0.5);
     }
   }
 
@@ -595,6 +606,10 @@ button:before {
     > li:last-child {
       margin: 0;
     }
+    > li:nth-child(2) > a { background: transparent image-url("club-thumb-hakkasan.jpg") no-repeat 0 0; }
+    > li:nth-child(3) > a { background: transparent image-url("club-thumb-opera.jpg") no-repeat 0 0; }
+    > li:nth-child(4) > a { background: transparent image-url("club-thumb-tongue.jpg") no-repeat 0 0; }
+    > li:nth-child(5) > a { background: transparent image-url("club-thumb-gold.jpg") no-repeat 0 0; }
   }
 
   .tb-card-content-wrapper {
