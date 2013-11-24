@@ -221,6 +221,7 @@ a:hover {
     letter-spacing: 20px;
     position: relative;
     left: 10px;
+    cursor: pointer;
     @include text-shadow(0 0 10px rgba(127, 238, 255, 1), 0 0 50px rgba(127, 238, 255, 1), 0 1px 0 #000000);
     @include opacity(0.97);
     @include transition-property(font-size, line-height, letter-spacing);
@@ -392,6 +393,7 @@ a:hover {
   ul#tb-clubs {
     display: block;
     padding: 10px 5px 0 5px;
+    background: transparent image-url("shadow-tile.png") repeat-x 0 0;
     > li {
       display: block;
       margin: 0 0 10px 0;
@@ -446,6 +448,10 @@ a:hover {
     > li:last-child {
       margin: 0;
     }
+  }
+
+  #tb-club {
+    
   }
 
 }
