@@ -20,6 +20,7 @@
 
 // global variables are so gross -- TODO clean up later
 var global_cart = $.cookie("shopping_cart");
+var global_position = null;
 
 
 $.cookie.json = true;
@@ -27,6 +28,31 @@ $.cookie.json = true;
 if(navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function(position){
     global_position = position;
+
+    var closest = {
+      ptr: null,
+      val: 100000000
+    };
+
+    $("#tb-cities>li").each(function(){
+      var lat1 = parseFloat($(this).attr("lat"));
+      var lon1 = parseFloat($(this).attr("lon"));
+      
+      var distance = haversine( lat1, lon1, global_position.coords.latitude, global_position.coords.longitude);
+      $(this).attr("distance", distance);
+
+      if( distance < closest.val ){
+        closest.val = distance;
+        closest.ptr = $(this);
+      }
+
+    });
+
+    if( closest.ptr != null ){
+      $(".tb-city-selected").removeClass("tb-city-selected");
+      closest.ptr.addClass("tb-city-selected");  
+    }
+
   }, function(){
     console.log("Geolocation error");
   });
@@ -38,7 +64,26 @@ $(document).ready(function(){
   $("#p-slider").slider();
 });
 
+function haversine(lat1, lon1, lat2, lon2){
+  var R = 6371; // km
+  var dLat = (lat2-lat1).toRad();
+  var dLon = (lon2-lon1).toRad();
+  var lat1 = lat1.toRad();
+  var lat2 = lat2.toRad();
 
+  var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+          Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  var d = R * c;
+
+  return d;
+}
+
+if (typeof(Number.prototype.toRad) === "undefined") {
+  Number.prototype.toRad = function() {
+    return this * Math.PI / 180;
+  }
+}
 
 
 
