@@ -147,6 +147,15 @@ h4 {}
 h5 {}
 h6 {}
 
+h2.tb-section-header {
+  padding: 43px 0 32px 0;
+  font-size: 18px;
+  line-height: 20px;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+}
+
 hr {
   width: 100%;
   height: 1px;
@@ -196,6 +205,107 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+
+
+/* Buttons */
+/************************************************/
+
+.tb-button,
+input[type="submit"],
+button {
+  display: inline-block;
+  padding: 9px 20px 7px 20px;
+  margin: 0 10px 15px 0;
+  border-top: none;
+  border-right: none;
+  border-bottom: 3px solid $teal-dark;
+  border-left: none;
+  color: $white;
+  background: $teal;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 30px;
+  cursor: pointer;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -webkit-appearance: none;
+  @include box-sizing(border-box);
+  @include border-radius(2px);
+  @include text-shadow(0 1px 1px $teal-dark);
+  @include screen-format(mobile) {
+    font-size: 16px;
+    width: 100%;
+  }
+  strong {
+    text-decoration: underline;
+  }
+  i {
+    margin: 0 0 0 10px;
+    line-height: 1em;
+    position: relative;
+    top: 4px;
+    @include screen-format(mobile) {
+      float: right;
+      margin: 0 0 0 10px;
+      line-height: 1em;
+      position: relative;
+      top: 8px;
+    }
+  }
+}
+
+.tb-button.tb-button-negative,
+input[type="submit"].tb-button-negative,
+button.tb-button-negative {
+  @include text-shadow(0 1px 1px $red-dark);
+  background: $red;
+  border-bottom: 3px solid $red-dark;
+}
+
+.tb-button.tb-button-large,
+input[type="submit"].tb-button-large,
+button.tb-button-large {
+  padding: 17px 20px 15px 20px;
+  font-size: 22px;
+  @include screen-format(mobile) {
+    width: 100%;
+    padding: 12px 20px 10px 20px;
+    font-size: 16px;
+  }
+}
+
+.tb-button:active,
+input[type="submit"]:active,
+button:active {
+  position: relative;
+  top: 2px;
+}
+
+.tb-button:hover,
+input[type="submit"]:hover,
+button:hover {
+  text-decoration: none;
+  @include opacity(.66);
+}
+
+.tb-button:focus,
+input[type="submit"]:focus,
+button:focus {
+  outline: none;
+}
+
+.tb-button:before,
+input[type="submit"]:before,
+button:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+}
+
 
 
 
@@ -451,7 +561,113 @@ a:hover {
   }
 
   #tb-club {
-    
+    display: block;
+    width: 620px;
+    padding: 5px;
+    background: transparent image-url("shadow-tile-inverted.png") repeat-x bottom left;
+    text-align: center;
+    @include box-sizing(border-box);
+    #tb-club-banner {
+      display: block;
+      width: 610px;
+      height: 110px;
+      padding: 10px 0;
+      margin: 14px 0 0 0;
+      position: absolute;
+      background: rgba(0, 0, 0, 0.5);
+      > h3 {
+        display: block;
+        width: 610px;
+        padding: 21px 0 0 0;
+        border-top: 2px solid rgba(255, 255, 255, 0.33);
+        font-size: 32px;
+        font-weight: 300;
+        color: #ffffff;
+        text-transform: uppercase;
+        position: absolute;
+      }
+      > i.ss-icon {
+        display: block;
+        width: 610px;
+        padding: 61px 0 17px 0;
+        font-size: 14px;
+        color: #ffffff;
+        position: absolute;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.33);
+      }
+      .tb-club-go-left,
+      .tb-club-go-right {
+        display: block;
+        float: left;
+        padding: 43px 0 0 0;
+        margin: 0 0 0 20px;
+        > i.ss-icon {
+          color: #ffffff;
+          font-size: 30px;
+          @include opacity(.25);
+        }
+      }
+      .tb-club-go-right {
+        float: right;
+        margin: 0 20px 0 0;
+      }
+    }
+  }
+
+  ul.tb-detail-list {
+    display: block;
+    width: 100%;
+    > li {
+      display: block;
+      width: 100%;
+      padding: 11px 22px 10px 22px;
+      border-top: 1px solid #efe9e2;
+      @include box-sizing(border-box);
+      @include legacy-pie-clearfix;
+      > a.tb-detail-list-thumbnail {
+        display: block;
+        float: left;
+        width: 78px;
+        height: 78px;
+        margin: 0 15px 0 0;
+      }
+      > .tb-detail-list-info {
+        display: block;
+        float: left;
+        width: 300px;
+        margin: 0 15px 0 0;
+        > h4 {
+          padding: 8px 0 5px 0;
+          font-size: 26px;
+          line-height: 30px;
+          text-transform: uppercase;
+          font-weight: 300;
+        }
+        > h5 {
+          i.ss-icon {
+            font-size: 18px;
+            line-height: 20px;
+          }
+        }
+      }
+      > .tb-detail-list-action {
+        display: block;
+        float: left;
+        width: 168px;
+        a.tb-button {
+          float: right;
+          padding-left: 10px;
+          padding-right: 10px;
+          margin: 0;
+          font-size: 18px;
+          font-weight: 900;
+          text-transform: uppercase;
+        }
+      }
+    }
+    li:last-child {
+      border-bottom: 1px solid #efe9e2;      
+    }
   }
 
 }
