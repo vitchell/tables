@@ -193,7 +193,7 @@ input[type="email"],
 input[type="password"],
 textarea {
   padding: 8px 14px 10px 14px;
-  border: 1px solid $font-body-color;
+  border: 1px solid #d9d9d9;
   color: $font-body-color;
   @include box-sizing(border-box);
   @include border-radius(2px);
@@ -652,6 +652,9 @@ button:before {
           font-weight: 300;
         }
         > h5 {
+          font-size: 18px;
+          line-height: 20px;
+          font-weight: 300;
           i.ss-icon {
             font-size: 18px;
             line-height: 20px;
@@ -662,6 +665,7 @@ button:before {
         display: block;
         float: left;
         width: 168px;
+        text-align: right;
         a.tb-button {
           float: right;
           padding: 2px 15px 2px 15px;
@@ -671,8 +675,26 @@ button:before {
           font-weight: 900;
           color: $font-body-color;
           text-transform: uppercase;
+          text-align: center;
           background: rgba(0, 0, 0, 0.10);
           @include text-shadow(none);
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea {
+          display: inline-block;
+          margin: 13px 5px 0 5px;
+          width: 69px;
+          font-size: 18px;
+          font-weight: 900;
+          text-align: right;
+        }
+        i.ss-icon {
+          position: relative;
+          top: 6px;
+          cursor: pointer;
+          @include opacity(0.33);
         }
       }
     }
