@@ -18,4 +18,13 @@ class HomeController < ApplicationController
   def step05
   end
 
+  def step06
+  end
+
+  def step07
+  end
+
+  def step08
+  end
+
 end
