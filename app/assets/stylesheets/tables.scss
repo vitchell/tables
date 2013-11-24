@@ -269,6 +269,19 @@ button.tb-button-cta {
   text-transform: uppercase;
 }
 
+.tb-button.tb-button-plain,
+input[type="submit"].tb-button-cta,
+button.tb-button-cta {
+  padding: 17px 20px 19px 20px;
+  border: 1px solid #d9d9d9;
+  font-size: 26px;
+  line-height: 40px;
+  text-transform: uppercase;
+  background: #f8f8f8;
+  color: $font-body-color;
+  @include text-shadow(none);
+}
+
 .tb-button:active,
 input[type="submit"]:active,
 button:active {
@@ -471,7 +484,7 @@ button:before {
 
   display: inline-block;
   width: 100%;
-  height: 100%;
+  height: 1041px;
   margin: 0 20px 0 0;
   position: relative;
   overflow: visible;
@@ -688,6 +701,9 @@ button:before {
     .tb-button {
       width: 100%;
       text-align: center;
+    }
+    .tb-button.tb-button-plain {
+      margin: 12px 0 25px 0;
     }
   }
 
