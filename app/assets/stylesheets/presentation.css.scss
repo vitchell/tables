@@ -1,0 +1,74 @@
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/utilities/general/clearfix";
+@import "compass/utilities/general/hacks";
+@import "susy";
+
+$sans-serif-font: 'Lato', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+$logotype-font: 'Josefin Sans', 'Lato', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+
+body{
+  background: transparent image-url("body-background.jpg") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#tb-presentation{
+
+  height: 500px;
+  width: 900px;
+  margin: 0 auto;
+  padding-top: 50px;
+
+  #tb-presentation-container{
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    @include border-radius(8px);
+
+    ul{
+      padding: 20px;
+      font-size: 30px;
+      li{
+        list-style-type: circle;
+        margin-left: 20px;
+        padding: 5px;
+
+        li{
+          font-size: 25px;
+        }
+      }
+    }
+
+  }
+
+
+  a{
+    color: inherit;
+  }
+
+  h1{
+    display: block;
+    width: 100%;
+    color: #a4c7dc;
+    font-size: 150px;
+    font-family: $logotype-font;
+    text-align: center;
+    margin: 0 auto;
+    position: absolute;
+    top: 48%;
+  }
+
+  h2{
+    display: block;
+    width: 100%;
+    color: #a4c7dc;
+    font-size: 100px;
+    font-family: $logotype-font;
+    text-align: center;
+    margin: 0 auto 40px auto;
+  }
+
+}

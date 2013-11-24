@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tables</title>
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900|Josefin+Sans:300' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "presentation", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js" %>
+  <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-resource.min.js" %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body ng-app>
+
+  <div id="tb-presentation">
+    <%= yield %>
+  </div>
+
+
+</body>
+</html>
