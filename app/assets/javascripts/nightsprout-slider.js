@@ -9,10 +9,10 @@ $.widget("ns.slider", {
     var self = this;
 
     if( this.options.max_index == 0 || this.options.max_index == null){
-      this.options.max_index = this.element.children("li").length;
+      this.options.max_index = this.element.children().length;
     }
 
-    $("a[ns-slider-page]", this.element).click(function(e){
+    $("a[ns-slider-page]").click(function(e){
       var index = parseInt( $(this).attr("ns-slider-page") );
       self._activatePaneByIndex( index );
 
@@ -37,7 +37,8 @@ $.widget("ns.slider", {
     if( index < 0 || index > this.options.max_index ) return;
 
     var motion_size = this.element.parent().outerWidth(true);
-    this.element.animate({left: "-"+(index * motion_size)+"px" }, 400, "linear");
+    console.log(motion_size)
+    this.element.children().eq(0).animate({"margin-left": "-"+(index * motion_size)+"px" }, 400, "linear");
     this.options.index = index;
   },
 
